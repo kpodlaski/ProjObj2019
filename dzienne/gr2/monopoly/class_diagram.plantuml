@@ -1,18 +1,15 @@
 @startuml
-
 Game "dices" *-- Dice
 Game -- Board
+Board *-- Place
+Place -- Card
 Player *-- Card
 Bank *-- Card
-Place -- Card
-Game -- Bank
-Game *-- Player
 Hotel --|> House
 Place *-- House
-' Komentarz
-/'
-Komentarz
-'/
+Game -- Bank
+Game *-- Player
+
 class Dice{
     +roll()
     +showValue():int

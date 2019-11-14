@@ -1,5 +1,4 @@
 {
     "plantuml.jar": "C:\\Programowanie\\Tools\\PlantUML\\plantuml.jar",
-    "plantuml.exportOutDir": ".",
-    "plantuml.diagramsRoot": "."
+    "plantuml.exportOutDir": "diagrams"
 }
