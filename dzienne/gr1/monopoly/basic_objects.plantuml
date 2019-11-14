@@ -1,0 +1,33 @@
+@startuml  Monopoly_Game_class_diagram
+
+Game "dices" *--  Dice : uses
+
+Game --> Board
+Board --> Place
+Place -- Card
+Player *-- Card
+Bank *-- Card
+Hotel --|> House
+Place *-- House
+Game -- Bank
+Game -- Player
+
+class Dice{
+}
+'Controller for the game app
+class Game
+class Board
+class Bank
+{
+    +sell(place:Place, player:Player)
+}
+class Place
+class Player{
+    +doYouBuy(p:Place):bool
+    +buy(bank:Bank, card:Card)
+}
+class Card
+class House
+class Hotel
+
+@enduml
