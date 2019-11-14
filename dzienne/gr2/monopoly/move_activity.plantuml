@@ -1,0 +1,22 @@
+@startuml
+(*) --> "Roll Dices"
+-->"Move Player"
+if "Roll again" then
+    --> [true] "Roll Dices"
+else 
+--> [false] if "Place is owned" then
+      --> [true] "Pay the rent"
+       --> "Next Player"
+    else 
+       --> [false] if "Do Player buy" then
+         -->[true] "Buy from the Bank"
+         -->"update account"
+         -->"add new Card to Player"
+         -->"remove Card from Bank"
+         -->"Next Player"
+          else 
+            --> [false] "Next Player"
+
+"Next Player" -->(*)
+
+@enduml
