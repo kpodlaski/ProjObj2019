@@ -21,8 +21,12 @@ class Dice{
 class Game{
     -activePlayer: Player
     +nextPlayer()
+    'implements move activity diagram'
+    +moveProcess()
 }
-class Board
+class Board{
+    +getPlaceOnPosition(p:int):Place
+}
 class Bank{
     -cashAmmount:int
     +isPlaceOwned(place:Place):boolean
