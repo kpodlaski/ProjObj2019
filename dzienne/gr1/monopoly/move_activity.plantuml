@@ -1,0 +1,18 @@
+@startuml Monopoly_Game_move_activity_diagram
+(*) --> "Roll dices"
+"Roll dices" --> "Move Player"
+
+if "Place is owned" then
+    --> [true] "Pay the rent"
+    --> "Next Player"
+else 
+    --> [false] "Buying procedure"
+    if "Buy decision" then
+        --> [true] "Buy from Bank"
+        --> "update account"
+        --> "add new Card"
+        --> "Next Player"
+    else
+    --> [false] "Next Player"
+"Next Player" --> (*)
+@enduml
