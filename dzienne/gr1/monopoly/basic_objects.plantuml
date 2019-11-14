@@ -3,7 +3,7 @@
 Game "dices" *--  Dice : uses
 
 Game --> Board
-Board --> Place
+Board *-- Place
 Place -- Card
 Player *-- Card
 Bank *-- Card
@@ -13,9 +13,15 @@ Game -- Bank
 Game -- Player
 
 class Dice{
+    +roll()
+    +showValue():int
 }
 'Controller for the game app
-class Game
+class Game{
+    -activePlayer:Player
+    +movePlayer()
+    +nextPlayer()
+}
 class Board
 class Bank
 {
