@@ -1,0 +1,10 @@
+@startuml
+class Dice
+class Game
+class Board
+class Bank
+class Place
+class Player
+class Card
+
+@enduml
