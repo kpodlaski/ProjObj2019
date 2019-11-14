@@ -17,11 +17,36 @@ class Dice{
     +roll()
     +showValue():int
 }
-class Game
+'Controller of the game process'
+class Game{
+    -activePlayer: Player
+    +nextPlayer()
+}
 class Board
-class Bank
+class Bank{
+    -cashAmmount:int
+    +isPlaceOwned(place:Place):boolean
+    /' 
+        sell - operations:
+        increase ammount, 
+        remove card from bank,
+        invoke buy on player
+    '/
+    +sell(card:Card, player:Player)
+}
 class Place
-class Player
+class Player{
+    -cashAmmount:int
+    +position:int 
+    +move()
+    +doYouBuy(place:Place): boolean
+    /' 
+        buy - operations:
+        decrease ammount, 
+        add card
+    '/
+    +buy(card:Card)
+}
 class Card
 class House
 class Hotel
