@@ -8,9 +8,14 @@ Place -- Card
 Player *-- Card
 Bank *-- Card
 Hotel --|> House
-Place *-- House
+SpecialPlace --|> Place
+PlaceWithCard --|>Place
+PlaceWithCardAndHouses --|>PlaceWithCard
+PlaceWithCardAndHouses *-- House
+
 Game -- Bank
 Game -- Player
+
 
 class Dice{
     +roll()
@@ -28,6 +33,11 @@ class Bank
     +sell(place:Place, player:Player)
 }
 class Place
+
+class SpecialPlace{}
+class PlaceWithCard{}
+class PlaceWithCardAndHouses{}
+
 class Player{
     +doYouBuy(p:Place):bool
     +buy(bank:Bank, card:Card)
@@ -35,5 +45,6 @@ class Player{
 class Card
 class House
 class Hotel
+
 
 @enduml
