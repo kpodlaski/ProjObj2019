@@ -2,13 +2,17 @@
 Game "dices" *-- Dice
 Game -- Board
 Board *-- Place
-Place -- Card
+PlaceWithCard -- Card
 Player *-- Card
 Bank *-- Card
 Hotel --|> House
-Place *-- House
+PlaceWithCardAndHouses *-- House
 Game -- Bank
 Game *-- Player
+SpecialPlace --|> Place
+PlaceWithCard --|> Place
+PlaceWithCardAndHouses --|> PlaceWithCard
+
 
 class Dice{
     +roll()
@@ -35,7 +39,17 @@ class Bank{
     '/
     +sell(card:Card, player:Player)
 }
-class Place
+class Place {}
+
+
+class SpecialPlace {
+    +acion():void
+}
+class PlaceWithCard {}
+class PlaceWithCardAndHouses {}
+
+
+
 class Player{
     -cashAmmount:int
     +position:int 
