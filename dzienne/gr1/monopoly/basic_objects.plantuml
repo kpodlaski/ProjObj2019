@@ -4,7 +4,7 @@ Game "dices" *--  Dice : uses
 
 Game --> Board
 Board *-- Place
-Place -- Card
+
 Player *-- Card
 Bank *-- Card
 Hotel --|> House
@@ -12,7 +12,7 @@ SpecialPlace --|> Place
 PlaceWithCard --|>Place
 PlaceWithCardAndHouses --|>PlaceWithCard
 PlaceWithCardAndHouses *-- House
-
+PlaceWithCard -- Card
 Game -- Bank
 Game -- Player
 
@@ -32,7 +32,12 @@ class Bank
 {
     +sell(place:Place, player:Player)
 }
-class Place
+class Place{
+    +id : int
+    +icon : Image
+    +name : String
+
+}
 
 class SpecialPlace{}
 class PlaceWithCard{}
@@ -42,7 +47,19 @@ class Player{
     +doYouBuy(p:Place):bool
     +buy(bank:Bank, card:Card)
 }
-class Card
+note top
+    We can use Visitor pattern
+    when creating the ranking
+end note
+class Card{
+    +price : int
+    +country:String
+    +countrySize:int
+}
+note right
+    We can use Composite pattern
+    for countries 
+end note
 class House
 class Hotel
 

@@ -1,0 +1,25 @@
+@startuml
+(*) --> "Open configuration file" 
+--> "Init basic fields"
+note right
+    Create Bank 
+end note
+--> "Iterate all emenents in file"
+if "elements left" then 
+    --> [true] "decide the Place type"
+    partition "abstract factory" {
+    --> "create Place object"
+    --> "add Place to Board"
+    --> "add Card to Bank"
+    }
+    note right
+        if place has a Card
+    end note
+    --> "Iterate all emenents in file"
+else
+    --> [false] (*)
+note right 
+    All activity can be done as builder for Board
+    end note
+
+@enduml
