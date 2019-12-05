@@ -18,6 +18,7 @@ class Dice{
     +roll()
     +showValue():int
 }
+
 'Controller of the game process'
 class Game{
     -activePlayer: Player
@@ -25,6 +26,7 @@ class Game{
     'implements move activity diagram'
     +moveProcess()
 }
+
 class Board{
     +getPlaceOnPosition(p:int):Place
 }
@@ -42,20 +44,18 @@ class Bank{
 note top
     add information about houses to buy
 endnote 
+
 class Place {
     +id : int
     +name: String 
     +icon : Image
 }
 
-
 class SpecialPlace {
     +acion():void
 }
 class PlaceWithCard {}
 class PlaceWithCardAndHouses {}
-
-
 
 class Player{
     -cashAmmount:int
