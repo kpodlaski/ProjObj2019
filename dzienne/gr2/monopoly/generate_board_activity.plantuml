@@ -1,0 +1,22 @@
+@startuml
+note top
+    We can use Builder pattern
+    for this activity 
+endnote
+(*) --> "initaialize Board"
+--> "initialize Bank"
+--> "open config file"
+--> "get next element"
+if "Not Null" then 
+    --> [true] "type of Place decision"
+    partition "Abstract Factory pattern" {
+    --> "create appropriate Place object"  
+    --> "create Card if needed"
+    }
+    --> "add Place to Board"
+    --> "add Card to Bank"
+    --> "get next element"
+else
+-left-> (*)
+
+@enduml

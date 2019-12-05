@@ -12,7 +12,7 @@ Game *-- Player
 SpecialPlace --|> Place
 PlaceWithCard --|> Place
 PlaceWithCardAndHouses --|> PlaceWithCard
-
+Game *-- LoteryCoupon
 
 class Dice{
     +roll()
@@ -39,7 +39,14 @@ class Bank{
     '/
     +sell(card:Card, player:Player)
 }
-class Place {}
+note top
+    add information about houses to buy
+endnote 
+class Place {
+    +id : int
+    +name: String 
+    +icon : Image
+}
 
 
 class SpecialPlace {
@@ -62,8 +69,42 @@ class Player{
     '/
     +buy(card:Card)
 }
-class Card
+note top
+    we can use Visitor pattern
+    for count the wealth of player
+    ---
+    what to do with
+    lotery coupon :"you can leave jail earlier"
+endnote
+
+class Card{
+    id:int
+    price:int
+    rent:int
+    country:String
+    countrySize:int
+}
+note left
+    id on Card is the same
+    as id on connected Place
+    ---
+    we can create composite pattern
+    for Country if Player has all Cards
+    from one country.
+    ---
+    how we add Houses and "countries" 
+    without houses (via inheritance or fields)
+    --- 
+    add information about house price, 
+    rent depends on houses,
+    how many houses are placed
+end note
 class House
 class Hotel
+
+class LoteryCoupon{
+    +text: String
+    +action():void
+}
 
 @enduml
