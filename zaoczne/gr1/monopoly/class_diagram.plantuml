@@ -1,0 +1,27 @@
+@startuml
+class Player{}
+class Bank{}
+class Game {}
+
+class Board {}
+class Place{}
+class Card{}
+class House{}
+class Hotel{}
+class Dice{}
+class LoteryCoupon{}
+
+Player --* Game
+Bank -- Game
+Board -- Game
+Card -- Place
+Place --* Board
+Dice --* Game
+House --* Place
+House --* Bank
+LoteryCoupon --* Board
+Card --* Bank
+Card --* Player
+LoteryCoupon --* Player
+Hotel --|> House
+@enduml
