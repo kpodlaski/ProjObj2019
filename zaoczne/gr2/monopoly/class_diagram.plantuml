@@ -1,14 +1,32 @@
 @startuml
 
 class Game{}
-class Player{}
+class Player{
+    name:String
+    balance :int
+}
 class Bank{}
 class Board{}
-class Place{}
-class Pawn{}
-class Dice{}
-class Card{}
-class Chance{}
+class Place{
+    position:int
+    name:String
+}
+class Pawn{
+    position:int
+    color:String
+}
+class Dice{
+    roll():int
+}
+class Card{
+    price:int
+}
+class Chance{
+    info:String
+    action():void
+}
+class House{}
+class Hotel{}
 
 Player --* Game
 Pawn -- Player
@@ -21,4 +39,7 @@ Chance --* Board
 Card --* Player
 Card --* Bank
 Chance --* Player 
+House --* Bank
+House --* Place
+Hotel --|> House
 @enduml
