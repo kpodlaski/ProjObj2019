@@ -13,6 +13,11 @@ class Board {}
 class Place{
     +position:int
 }
+class SpecialPlace{
+    +action():void
+}
+class PlaceWithCard{}
+class PlaceWithCardAndHouse{} 
 class Card{}
 class House{}
 class Hotel{}
@@ -26,14 +31,18 @@ class Chance{
 Player --* Game
 Bank -- Game
 Board -- Game
-Card -- Place
+Card -- PlaceWithCard
 Place --* Board
 Dice --* Game
-House --* Place
+House --* PlaceWithCardAndHouse
 House --* Bank
 Chance --* Board
 Card --* Bank
 Card --* Player
 Chance --* Player
 Hotel --|> House
+
+SpecialPlace --|> Place
+PlaceWithCard --|> Place
+PlaceWithCardAndHouse --|> PlaceWithCard
 @enduml
