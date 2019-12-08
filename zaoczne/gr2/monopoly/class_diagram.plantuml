@@ -29,7 +29,9 @@ class House{}
 class Hotel{}
 class PlaceWithCard{}
 class PlaceWithCardAndHouses{}
-class SpecialPlace{}
+class SpecialPlace{
+    action():void
+}
 
 
 Player --* Game

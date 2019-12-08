@@ -7,6 +7,9 @@ if "Doublet" then
     else 
     --> [false] "Move Pawn"
 if "Place is owned" then 
+note left
+    Special Places -- check type of Place
+endnote
 --> [true] "Check ownership"
 else 
 --> [false] "Ask if Player buys property"
