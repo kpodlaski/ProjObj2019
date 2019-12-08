@@ -21,6 +21,12 @@ class Dice{
 class Card{
     price:int
 }
+note left    
+    country:String
+    countrySize:int
+    ---
+    or new Class Country
+end note
 class Chance{
     info:String
     action():void
@@ -39,6 +45,7 @@ Pawn -- Player
 Pawn --* Board
 Dice --* Game
 Bank -- Game
+Board -- Game
 Place --* Board
 Card -- PlaceWithCard
 Chance --* Board

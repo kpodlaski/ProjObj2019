@@ -1,0 +1,17 @@
+@startuml
+
+(*) --> "Open Configuration"
+partition "Bank Board Builder" {
+--> "Init empty Bank and Board"
+--> "Next map element"
+partition "Abstract Factory" {
+--> "Create appropriate Place
+     and
+     Create Card if needed"
+}
+--> "Add Place to Board"
+--> "Add Card to Bank"
+}
+--> "Create Starting Players with Pawns"
+--> "Add Players to Game"
+@enduml

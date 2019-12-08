@@ -9,8 +9,14 @@ if "Doublet" then
 if "Place is owned" then 
 note left
     Special Places -- check type of Place
-endnote
---> [true] "Check ownership"
+    add if before
+end note
+--> [true] "Check ownership" 
+note left
+    Depend on one or two directional references 
+    between Place, Card, Bank, Player.
+    Suggested solution create Actor class
+end note
 else 
 --> [false] "Ask if Player buys property"
 if "Buy" then 
