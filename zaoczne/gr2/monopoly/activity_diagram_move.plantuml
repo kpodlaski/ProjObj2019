@@ -1,0 +1,35 @@
+@startuml
+
+(*) --> "Select next Player"
+--> "Roll dice"
+if "Doublet" then 
+    --> [true] "Count doubles" 
+    else 
+    --> [false] "Move Pawn"
+if "Place is owned" then 
+--> [true] "Check ownership"
+else 
+--> [false] "Ask if Player buys property"
+if "Buy" then 
+--> [false] (*)
+else 
+--> [true] "Udate the Player balance"
+--> "Move Card from Bank to the Player"
+--> (*)
+
+"Check ownership" --> if "Payer owns the Place"
+--> [true] "Buy House if Player has the country" as buy
+else 
+--> [false] "Pay rent"
+--> "Update Player balance"
+--> "Update Owner balance"
+-->(*)
+
+"Count doubles" --> if "count<3" then
+--> [true] "Roll dice"
+else 
+-->[false] "Go to Jail"
+-->(*)
+
+buy -->(*)
+@enduml

@@ -27,6 +27,10 @@ class Chance{
 }
 class House{}
 class Hotel{}
+class PlaceWithCard{}
+class PlaceWithCardAndHouses{}
+class SpecialPlace{}
+
 
 Player --* Game
 Pawn -- Player
@@ -34,12 +38,16 @@ Pawn --* Board
 Dice --* Game
 Bank -- Game
 Place --* Board
-Card -- Place
+Card -- PlaceWithCard
 Chance --* Board
 Card --* Player
 Card --* Bank
 Chance --* Player 
 House --* Bank
-House --* Place
+House --* PlaceWithCardAndHouses
 Hotel --|> House
+PlaceWithCard --|> Place
+PlaceWithCardAndHouses --|> PlaceWithCard
+SpecialPlace --|>Place
+
 @enduml
