@@ -1,0 +1,24 @@
+@startuml
+
+class Game{}
+class Player{}
+class Bank{}
+class Board{}
+class Place{}
+class Pawn{}
+class Dice{}
+class Card{}
+class Chance{}
+
+Player --* Game
+Pawn -- Player
+Pawn --* Board
+Dice --* Game
+Bank -- Game
+Place --* Board
+Card -- Place
+Chance --* Board
+Card --* Player
+Card --* Bank
+Chance --* Player 
+@enduml
