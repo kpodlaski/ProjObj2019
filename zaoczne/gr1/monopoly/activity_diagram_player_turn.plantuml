@@ -3,7 +3,7 @@
 (*) --> "Select Next Player"
 --> "Roll dices"
 if "Doublet" then 
-   --> [true] "Count occurences" as co
+   --> [true] "Count occurences of doubles" as co
 else 
    --> [false] "Move the pawn"
 if "Place is owned" then 
