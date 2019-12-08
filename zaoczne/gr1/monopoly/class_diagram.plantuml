@@ -1,15 +1,27 @@
 @startuml
-class Player{}
-class Bank{}
+class Player{
+    +balance : int
+    +name : String
+}
+class Bank{
+    'we can allow infinite balance in bank
+    +balance : int
+}
 class Game {}
 
 class Board {}
-class Place{}
+class Place{
+    +position:int
+}
 class Card{}
 class House{}
 class Hotel{}
-class Dice{}
-class LoteryCoupon{}
+class Dice{
+    +faceValue():int
+}
+class Chance{
+    +color:String
+}
 
 Player --* Game
 Bank -- Game
@@ -19,9 +31,9 @@ Place --* Board
 Dice --* Game
 House --* Place
 House --* Bank
-LoteryCoupon --* Board
+Chance --* Board
 Card --* Bank
 Card --* Player
-LoteryCoupon --* Player
+Chance --* Player
 Hotel --|> House
 @enduml
