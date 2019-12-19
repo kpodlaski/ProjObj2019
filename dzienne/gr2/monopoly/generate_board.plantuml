@@ -1,0 +1,21 @@
+@startuml
+actor client
+client -> game : initGame()
+activate game
+game -> board ** : <<create>>
+game -> bank ** : <<create>>
+game -> game : openConfigFile()
+loop for all records in file
+    game -> game :getPlaceType(record)
+    game -> game ++ : createPlace(type,record) 
+    game -> place ** : <<create>> 
+    game -> card ** : <<create>>     
+    game -> game : setProperties(place, record)
+    game -> game : setProperties(card, record)
+    return place, card
+    game -> board : addPlace(place)
+    game -> bank  : addCard(card)
+end
+game -> client : init ended
+deactivate game
+@enduml
