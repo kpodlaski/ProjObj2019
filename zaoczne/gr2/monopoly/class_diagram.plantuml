@@ -4,9 +4,19 @@ class Game{}
 class Player{
     name:String
     balance :int
+    moveTo(Place):void
+    updateBalance(ammount:int):void
+    addCard(card:Card):void
+    removeCard(card:Card):void
 }
-class Bank{}
-class Board{}
+class Bank{
+    updateBalance(ammount:int):void
+    addCard(card:Card):void
+    removeCard(card:Card):void
+}
+class Board{
+    newPosition(Player, int[]):Place
+}
 class Place{
     position:int
     name:String
@@ -39,6 +49,9 @@ class SpecialPlace{
     action():void
 }
 
+class UI{
+    buyDecision(Player,Place):boolean
+}
 
 Player --* Game
 Pawn -- Player
@@ -46,6 +59,7 @@ Pawn --* Board
 Dice --* Game
 Bank -- Game
 Board -- Game
+UI -- Game
 Place --* Board
 Card -- PlaceWithCard
 Chance --* Board

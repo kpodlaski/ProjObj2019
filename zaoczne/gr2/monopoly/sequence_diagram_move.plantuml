@@ -1,0 +1,40 @@
+@startuml
+actor Initiator
+participant Game
+participant Bank
+participant Board
+
+Initiator ->  Game : nextMove(Player) 
+loop repeat if double up to 3 times
+    Game -> Dices : roll()
+    activate Dices
+    Dices -> Dices : rand
+    return faceValues
+deactivate Dices
+end
+alt no more than 3 doubles
+    Game -> Board : newPosition(Player,faceValues)
+    activate Board
+    return position
+    deactivate Board
+    Game -> Player : moveTo(position)
+    note over Game: suppose it is not owned place
+    
+    Game -> UI : buyDecision(Player,Place)
+    activate UI
+    return decision
+    deactivate UI
+    note over Game: suppose decision is YES
+    Game -> Board : getCardFor(position)
+        note over Board : operation can be replaced by card = position.card
+    return card
+    note over Player : if has enought cash
+    Game -> Player : updateBalance(- card.price)
+    Game -> Bank : updateBalance(card.price)
+    Game -> Bank : removeCard(card)
+    Game -> Player : addCard(card)
+    else 3 doubles
+    Game -> Player : moveTo(Board.Jail)
+end
+Game -> Initiator : end of move
+@enduml
