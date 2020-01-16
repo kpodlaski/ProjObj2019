@@ -1,0 +1,39 @@
+@startuml
+actor Initiator
+
+participant Game 
+participant Board 
+participant Bank 
+participant Player
+participant Dice 
+
+Initiator -> Game : movePlayer()
+activate Game
+Game -> Game : nextPlayer()
+loop two or more times
+Game -> Dice : roll()
+activate Dice
+return faceValue
+deactivate Dice
+end
+Game -> Player: move(number_of_positions)
+return final_postion
+Game -> Bank : cardForPosition(final_position)
+note over Bank
+suppose answer Card Object (is not owned) 
+endnote
+return Card
+Game -> UI : askPlayer("Do You buy Place?")
+alt decision YES
+Game -> Bank: sell(Card.place, Player)
+activate Bank
+Bank -> Player : changeBalence(Place.price)
+Bank -> Bank : actualize balance
+Bank -> Bank : removeCard(Place.card)
+Bank ->Player : addCard(Place.card)
+return 
+deactivate Bank
+end
+Game -> Initiator : end_of_move
+deactivate Game
+@enduml
