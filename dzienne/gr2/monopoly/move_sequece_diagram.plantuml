@@ -1,0 +1,43 @@
+@startuml
+actor Initiator
+
+participant Game 
+participant Bank 
+participant Board 
+participant Player 
+participant Dice 
+
+Initiator -> Game: moveProcess()
+activate Game
+loop roll again if double
+    Game -> Dice:roll()
+    activate Dice
+    return faceValue
+    deactivate Dice
+    Game -> Player : move(faceValue) 
+end
+Game -> Board: getPlaceForPosition(Player.position)
+return Place
+Game -> Bank: isPlaceOwned(Place)
+note over Bank
+suppose the pace is not owned
+endnote
+Game -> UI : askIfPlayerBuys(Place)
+return answer
+alt answer is TRUE
+Game->Bank:sell(Place,Player)
+activate Bank
+Bank -> Player : changeBalance(-Place.price)
+Bank -> Bank : changeBalance(Place.pice)
+Bank -> Bank : removeCard(Place.card)
+Bank->Player : addCard(Place.card)
+return
+deactivate Bank
+
+
+else answer is FALSE
+end
+
+Game -> Initiator: finished 
+deactivate Game
+@enduml

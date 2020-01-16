@@ -60,8 +60,7 @@ class PlaceWithCardAndHouses {}
 class Player{
     -cashAmmount:int
     +position:int 
-    +move()
-    +doYouBuy(place:Place): boolean
+    +move(distance:int)
     /' 
         buy - operations:
         decrease ammount, 
