@@ -1,0 +1,63 @@
+@startuml
+actor initiator
+
+participant Game 
+participant Board 
+participant Player
+participant Dice 
+
+initiator -> Game : move()
+activate Game
+Game -> Game : nextPlayer()
+loop repeat if double, less than 3 doubles
+    Game -> Dice : roll()
+
+    Game -> Dice : faceValue()
+    activate Dice
+    return faceValue
+    deactivate Dice
+    Game -> Game: sum values
+end
+alt 3 doubles 
+    'If drawing is base on Player object
+    'Game -> Board : playerToJail(Player)
+    Game -> Board : getPlaceByName("Jail")
+    return Place
+    Game -> Player : moveTo(Place)
+    return Place
+
+else up to three doubles
+    'If drawing is base on Player object
+    'Game -> Board : movePlayer(Player, sum)
+    Game -> Player: move(sum)
+    return position
+    Game -> Board : getPlaceByPosition(position)
+    return Place
+    Game -> Bank : getCardForPlace(Place)
+    activate Bank
+        Bank -> Place : getCard()
+        activate Place
+            return Card
+        deactivate Place
+        Bank -> Bank : findCardInCards(Card)
+        activate Bank  
+        Bank --> Bank : true/false
+        deactivate Bank
+    'return Card
+    Bank --> Game : Card/null
+    deactivate Bank
+    note over Game
+        suppose Card is not null
+    endnote
+    Game -> UI : doYouBuyDialog()
+    return answer
+
+    note over Game 
+     The rest of the action
+    end note
+end
+Game -> initiator : finished
+deactivate Game
+
+
+@enduml

@@ -9,6 +9,8 @@ class Bank{
 }
 class Game {}
 
+class UI {}
+
 class Board {}
 class Place{
     +position:int
@@ -41,7 +43,7 @@ Card --* Bank
 Card --* Player
 Chance --* Player
 Hotel --|> House
-
+UI -- Game
 SpecialPlace --|> Place
 PlaceWithCard --|> Place
 PlaceWithCardAndHouse --|> PlaceWithCard
